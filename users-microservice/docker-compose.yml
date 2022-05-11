@@ -1,0 +1,44 @@
+version: '3'
+services:
+    users-microservice:
+        container_name: users-microservice
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            DB_HOST: users-microservice_db
+            DB_DATABASE: users-microservice
+            DB_USERNAME: root
+            DB_PASSWORD: root
+        command: 'php artisan serve --host=0.0.0.0'
+        networks:
+            - users-microservice
+        volumes:
+            - .:/app
+        ports:
+            - 8081:8000
+        depends_on:
+            - users-microservice_db
+
+    users-microservice_db:
+        platform: linux/x86_64
+        image: mysql:5.7
+        restart: always
+        environment:
+            MYSQL_DATABASE: users-microservice
+#            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+            MYSQL_ROOT_PASSWORD: root
+        networks:
+            - users-microservice
+        volumes:
+            - db-data:/var/lib/mysql
+        ports:
+            - 33070:3306
+
+networks:
+    users-microservice:
+        name: users-microservice
+
+volumes:
+    db-data:

@@ -1,0 +1,11 @@
+POST http://localhost:8082/api/user/create-post
+Content-Type: application/json
+Accept: application/json
+Authorization: Coo
+
+
+{
+    "title": "Post 1",
+    "description": "Just a post",
+    "publication_date": "2020-01-01:00:00"
+}

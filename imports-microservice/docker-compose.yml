@@ -1,0 +1,59 @@
+version: '3'
+services:
+    imports-microservice:
+        container_name: imports-microservice
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            DB_HOST: imports-microservice_db
+            DB_DATABASE: imports-microservice
+            DB_USERNAME: root
+            DB_PASSWORD: root
+        command: 'php artisan serve --host=0.0.0.0'
+        networks:
+            - imports-microservice
+            - users-microservice
+        volumes:
+            - .:/app
+        ports:
+            - 8083:8000
+        depends_on:
+            - imports-microservice_db
+
+    imports-microservice_queue:
+        build: .
+        command: 'php artisan queue:work'
+        restart: unless-stopped
+        environment:
+            CACHE_DRIVER: file
+        depends_on:
+            - imports-microservice_db
+        networks:
+            - imports-microservice
+
+    imports-microservice_db:
+        platform: linux/x86_64
+        image: mysql:5.7
+        restart: always
+        environment:
+            MYSQL_DATABASE: imports-microservice
+#            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+            MYSQL_ROOT_PASSWORD: root
+        networks:
+            - imports-microservice
+        volumes:
+            - db-data:/var/lib/mysql
+        ports:
+            - 33072:3306
+
+networks:
+    imports-microservice:
+        name: imports-microservice
+    users-microservice:
+        external:
+            name: users-microservice
+
+volumes:
+    db-data:

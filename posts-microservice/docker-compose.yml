@@ -1,0 +1,62 @@
+version: '3'
+services:
+    posts-microservice:
+        container_name: posts-microservice
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            DB_HOST: posts-microservice_db
+            DB_DATABASE: posts-microservice
+            DB_USERNAME: root
+            DB_PASSWORD: root
+        command: 'php artisan serve --host=0.0.0.0'
+        networks:
+            - posts-microservice
+            - users-microservice
+            - imports-microservice
+        volumes:
+            - .:/app
+        ports:
+            - 8082:8000
+        depends_on:
+            - posts-microservice_db
+
+    post-microservice_queue:
+        build: .
+        command: 'php artisan queue:work'
+        restart: unless-stopped
+        environment:
+            CACHE_DRIVER: file
+        depends_on:
+            - posts-microservice_db
+        networks:
+            - posts-microservice
+
+    posts-microservice_db:
+        platform: linux/x86_64
+        image: mysql:5.7
+        restart: always
+        environment:
+            MYSQL_DATABASE: posts-microservice
+#            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+            MYSQL_ROOT_PASSWORD: root
+        networks:
+            - posts-microservice
+        volumes:
+            - db-data:/var/lib/mysql
+        ports:
+            - 33071:3306
+
+networks:
+    posts-microservice:
+        name: posts-microservice
+    users-microservice:
+        external:
+            name: users-microservice
+    imports-microservice:
+        external:
+            name: imports-microservice
+volumes:
+    db-data:

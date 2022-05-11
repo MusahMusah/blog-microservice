@@ -1,0 +1,5 @@
+POST http://localhost:8081/api/logout
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 3|IRDSV3N6PE5ScPFpiVlzABEj5xNNhlCJhi1LdrDq
+
