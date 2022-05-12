@@ -1,4 +1,5 @@
-This blog platform microservice, built with PHP/Laravel, it allows users to register, login and create blog posts.
+# About The Microservice
+This blog platform microservice was built with PHP/Laravel, it allows users to register, login and create blog posts.
 Admin User can import posts from other blogs by providing the blog's REST API URL, and the frequency of import.
 Cron job / scheduler runs every minute to import posts from other blogs.
 
