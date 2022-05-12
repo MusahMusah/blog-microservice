@@ -1,5 +1,5 @@
 # About
-This is a microservice that will be used to perform posts import from [here](https://www.notion.so/Web-Developer-0cdf0bb1015d4e5c94b62b3fe61ee621) upon job event triggered from Post Microservice. It is also
+This is a microservice that will be used to perform posts import from [here](https://sq1-api-test.herokuapp.com/posts) upon job event triggered from Post Microservice. It is also
 connected to a docker network that will be used to connect to the User Microservice.
 
 ## Responsibilities
