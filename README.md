@@ -3,6 +3,8 @@ Admin User can import posts from other blogs by providing the blog's REST API UR
 Cron job / scheduler runs every minute to import posts from other blogs.
 
 This project is designed as a microservice, each microservice is a separate Laravel application running on docker.
+<img width="1265" alt="image" src="https://user-images.githubusercontent.com/51837314/168129363-5c458e06-604d-4766-aa5d-feb8464654ed.png">
+
 
 Task details can be accessed [here](https://www.notion.so/Web-Developer-0cdf0bb1015d4e5c94b62b3fe61ee621).
 
