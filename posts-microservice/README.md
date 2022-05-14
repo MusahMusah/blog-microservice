@@ -20,3 +20,24 @@ connected to a docker network that will be used to connect to the User Microserv
 * `/app/Services/` - The services which extracts the business logic.
 * `/app/Traits/` - The traits will be used from this directory.
 * `/app/routes/api.php` - The routes will be used from this file.
+
+## Api Endpoints
+The application is built with RESTful API endpoints. No frontend is built due to the simplicity of the application and time constraints.
+
+### The Login Endpoint
+![img.png](img.png)
+
+### Logout Endpoint
+![img_1.png](img_1.png)
+
+### New User Registration Endpoint
+![img_2.png](img_2.png)
+
+### User Create Post
+![img_3.png](img_3.png)
+
+### User's Posts
+![img_4.png](img_4.png)
+
+### Get all posts
+![img_5.png](img_5.png)

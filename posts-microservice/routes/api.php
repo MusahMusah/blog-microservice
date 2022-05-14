@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::get('/posts/all', [PostController::class, 'getPosts'])
+    ->name('posts.all');
 
 /**
  * USER MANAGEMENT ROUTES
@@ -22,6 +24,4 @@ Route::group(['middleware' => ['auth.user'], 'prefix' => 'user', 'as' => 'user.'
  */
 Route::group(['middleware' => ['auth.user']], fn () => [
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout'),
-    Route::get('/posts/all', [PostController::class, 'getPosts'])
-        ->name('posts.all'),
 ]);
