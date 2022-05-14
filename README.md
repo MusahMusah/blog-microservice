@@ -54,7 +54,14 @@ The application is built with RESTful API endpoints. No frontend is built due to
 - Get the application up and running by following the instructions in the Installation Guide of this README.
 
 ## Discussion
+* The Reason for using microservices software architecture is to have a loosely coupled system.
+This means that the system can be decoupled from the other components, making the system scalable and easy to maintain.
+* The Post Microservice handles importing posts from external blogs via a REST API as well as creating and retrieving posts.
+Post import is done via a cron job, which runs every minute validating posts to be imported from their next_export_time and frequency as specified in the database.
+This way posts can be imported from multiple blogs automatically.
 
+Another approach to importing posts from external blogs is to have an individual cron job for each import. This way the cron job can be scheduled to run based on the frequency of import.
+This was not implemented in this project due to time constraints.
 
 ### Improvements for a production API
 - Write tests with attention to non-framework specific features.
