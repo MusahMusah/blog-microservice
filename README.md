@@ -54,7 +54,7 @@ The application is built with RESTful API endpoints. No frontend is built due to
 - Get the application up and running by following the instructions in the Installation Guide of this README.
 
 ## Discussion
-This section contains justifications and improvements that should be made.
+
 
 ### Improvements for a production API
 - Write tests with attention to non-framework specific features.
@@ -64,5 +64,4 @@ This section contains justifications and improvements that should be made.
 
 ## Credits 🙏
 - Half of the Open Source Software community who contribute to the whole of the tools I use
-- Guido Lord_Sarcastic, well, he's a good guy.
 - Others who would be thanked by my smiles and Quora tags
