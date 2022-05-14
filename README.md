@@ -47,6 +47,7 @@ https://localhost:8081
 
 ## API Enpoints documentation
 The application is built with RESTful API endpoints. No frontend is built due to the simplicity of the application and time constraints.
+Get the postman collection of all the endpoints [here](https://www.getpostman.com/collections/23ffea80a3a9adeaccc1)
 
 
 ## Testing 🚨
